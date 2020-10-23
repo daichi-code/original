@@ -1,5 +1,5 @@
-class Category < ActiveHash::Base
-  self.date = [
+class Season < ActiveHash::Base
+  self.data = [
     { id: 1, name: '--'},
     { id: 2, name: '春・spring'},
     { id: 3, name: '夏・summer'},
