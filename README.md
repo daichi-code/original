@@ -8,7 +8,7 @@
 | password      | string    | null: false |
 | first_name    | string    | null: false |
 | last_name     | string    | null: false |
-| birthday      | string    | null: false |
+| birthday      | date      | null: false |
 
  - has_many :items
  - has_many :comments
