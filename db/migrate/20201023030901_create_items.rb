@@ -4,9 +4,9 @@ class CreateItems < ActiveRecord::Migration[6.0]
 
       t.string :title
       t.text :text
-      t.integer :year_id
-      t.integer :month_id
+      t.integer :season_id
       t.integer :category_id
+      t.integer :prefecture_id
       t.references :user, foreign_key: true
       t.timestamps
     end

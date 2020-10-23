@@ -4,7 +4,28 @@
     <%= form_with(model: @item, local: true) do |form| %>
       <%= form.text_field :name, placeholder: "タイトル" %>
       <%= form.text_field :image, placeholder: "画像を載せてね！" %>
+
+      <div class="weight-bold-text">
+        カテゴリーを選んでね！
+      <span class="indispensable">必須</span>
+      </div>
+      <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+
+      <div class="weight-bold-text">
+        撮った季節を選んでね！
+      <span class="indispensable">必須</span>
+      </div>
+      <%= f.collection_select(:season_id, Season.all, :id, :name, {}, {class:"select-box", id:"item-season"}) %>
+
+      <div class="weight-bold-text">
+        撮った場所を選んでね！
+      <span class="indispensable">必須</span>
+      </div>
+      <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
+
       <%= form.text_area :text, placeholder: "内容を入れてね！", rows: "10" %>
+
+
       <%= form.submit "SEND" %>
     <% end %>
   </div>
