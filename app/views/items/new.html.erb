@@ -2,28 +2,32 @@
   <div class="container">
     <h3>投稿する</h3>
     <%= form_with(model: @item, local: true) do |form| %>
-      <%= form.text_field :name, placeholder: "Title" %>
-      <%= form.text_field :image, placeholder: "Picture" %>
+
+      <%= render 'shared/error_messages', model: form.object %>
+
+
+      <%= form.text_area :title, placeholder: "Title" %>
+      <%= form.file_field :image, placeholder: "Picture" %>
 
       <div class="weight-bold-text">
         Category
       <span class="indispensable">必須</span>
       </div>
-        <%= form.collection_select :category, Category.all, :id, :name, {} %>
+        <%= form.collection_select :category_id, Category.all, :id, :name, {} %>
 
 
       <div class="weight-bold-text">
         Season
       <span class="indispensable">必須</span>
       </div>
-        <%= form.collection_select :season, Season.all, :id, :name, {} %>
+        <%= form.collection_select :season_id, Season.all, :id, :name, {} %>
 
 
       <div class="weight-bold-text">
         Place
       <span class="indispensable">必須</span>
       </div>
-        <%= form.collection_select :prefecture, Prefecture.all, :id, :name, {} %>
+        <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name, {} %>
 
 
       <%= form.text_area :text, placeholder: "Text", rows: "10" %>

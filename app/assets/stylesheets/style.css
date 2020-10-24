@@ -900,7 +900,7 @@ div.contents.row div.content_post .more {
   text-align: right;
 }
 
-div.contents.row div.content_post .more:hover ul.more_list {
+div.contents.row div.content_po .more:hover ul.more_list {
   display: block;
 }
 
@@ -917,20 +917,22 @@ div.contents.row div.content_post .more ul.more_list {
   border-radius: 3px;
 }
 
-div.contents.row div.content_post .more ul.more_list li {
+div.contents.row div.content_po .more ul.more_list li {
   border-bottom: 1px solid #ddd;
+  text-align: center;
+
 }
 
-div.contents.row div.content_post .more ul.more_list li:last-child {
+div.contents.row div.content_po .more ul.more_list li:last-child {
   border-bottom: 0;
 }
 
-div.contents.row div.content_post .more ul.more_list li a {
+div.contents.row div.content_po .more ul.more_list li a {
   display: block;
   padding: 5px;
 }
 
-div.contents.row div.content_post .more ul.more_list li a:hover {
+div.contents.row div.content_po .more ul.more_list li a:hover {
   background-color: #57C3E9;
   color: #fff;
 }
@@ -1056,4 +1058,8 @@ footer p {
 
 .search-form .search-btn {
   width: 10%;
+}
+
+.greeting{
+  margin-bottom: 20px;
 }

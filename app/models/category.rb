@@ -15,6 +15,7 @@ class Category < ActiveHash::Base
     { id: 12, name: '雑貨'},
     { id: 13, name: '乗り物'},
     { id: 14, name: 'アート'},
-    { id: 15, name: 'テクスチャ・背景'}
+    { id: 15, name: 'テクスチャ・背景'},
+    { id: 16, name: 'アニメ・漫画'}
   ]
 end
