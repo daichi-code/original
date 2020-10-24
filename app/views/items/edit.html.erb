@@ -1,29 +1,36 @@
 <div class="contents row">
   <div class="container">
-    <h3>編集ページ</h3>
+    <h3>投稿する</h3>
     <%= form_with(model: @item, local: true) do |form| %>
-      <%= form.text_field :name, placeholder: "タイトル" %>
-      <%= form.text_field :image, placeholder: "画像を載せてね！" %>
+
+      <%= render 'shared/error_messages', model: form.object %>
+
+
+      <%= form.text_area :title, placeholder: "Title" %>
+      <%= form.file_field :image, placeholder: "Picture" %>
 
       <div class="weight-bold-text">
-        カテゴリーを選んでね！
+        Category
       <span class="indispensable">必須</span>
       </div>
-      <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <%= form.collection_select :category_id, Category.all, :id, :name, {} %>
+
 
       <div class="weight-bold-text">
-        撮った季節を選んでね！
+        Season
       <span class="indispensable">必須</span>
       </div>
-      <%= f.collection_select(:season_id, Season.all, :id, :name, {}, {class:"select-box", id:"item-season"}) %>
+        <%= form.collection_select :season_id, Season.all, :id, :name, {} %>
+
 
       <div class="weight-bold-text">
-        撮った場所を選んでね！
+        Place
       <span class="indispensable">必須</span>
       </div>
-      <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
+        <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name, {} %>
 
-      <%= form.text_area :text, placeholder: "内容を入れてね！", rows: "10" %>
+
+      <%= form.text_area :text, placeholder: "Text", rows: "10" %>
 
 
       <%= form.submit "SEND" %>
