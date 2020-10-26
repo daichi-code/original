@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update, :show, :destroy]
   before_action :move_to_index, only: [:edit]
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @items = Item.all.order('id DESC')
   end
@@ -37,8 +39,13 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
 
+  def search
+    @items = Item.search(params[:keyword])
+  end
 
   private
   def item_params

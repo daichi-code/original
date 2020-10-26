@@ -1,21 +1,46 @@
 <div class="contents row">
-    <div class="content_po">
-      <p><%= @item.text %></p>
-      <%= image_tag @item.image%>
-      <div class="more">
-        <ul class="more_list">
-        <% if user_signed_in? && current_user.id == @item.user_id %>
-          <li>
-            <%= link_to '編集', edit_item_path(item.id), method: :get %>
-          </li>
-          <li>
-            <%= link_to '削除', item_path(item.id), method: :delete %>
-          </li>
-        <% end %>
-        </ul>
-      </div>
-      <span class="name">
-        <%= @item.title %>
-      </span>
+  <div class="content_po">
+    <p><%= @item.text %></p>
+    <%= image_tag @item.image%>
+    <div class="more">
+      <ul class="more_list">
+      <% if user_signed_in? && current_user.id == @item.user_id %>
+        <li>
+          <%= link_to '編集', edit_item_path(item.id), method: :get %>
+        </li>
+        <li>
+          <%= link_to '削除', item_path(item.id), method: :delete %>
+        </li>
+      <% end %>
+      </ul>
     </div>
+    <span class="name">
+      <%= @item.title %>
+    </span>
+  </div>
+  <div class="container">
+  <% if user_signed_in? %>
+    <%= form_with(model: [@item, @comment], method: :show, local: true) do |f| %>
+      <div class="field">
+        <%= f.label :text, "コメント" %><br />
+        <%= f.text_field :text %>
+      </div>
+  <div class="actions">
+    <%= f.submit "送信する", class: :form__btn  %>
+  </div>
+    <% end %>
+  <% end %>
+  <ul class="comments_lists">
+    <li class="comments_list">
+    <% if @comment %>
+      <% @comments.each do |comment| %>
+        <p>
+          <strong><%= link_to comment.user.nick_name, "/users/#{comment.user_id}" %>：</strong>
+          <%= comment.text %>
+        </p>
+      <% end %>
+    <% end %>
+    </li>
+  </ul>
+  </div>
 </div>
