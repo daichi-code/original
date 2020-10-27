@@ -6,22 +6,23 @@
   <% @items.each do |item| %>
     <div class="content_po">
       <p><%= item.text %></p>
-      <%= image_tag item.image%>
+      <% item.images.each do |image| %>
+      <%= image_tag image %>
+      <% end %>
       <div class="more">
         <ul class="more_list">
-        <% if user_signed_in? && current_user.id == item.user_id %>
+          <% if user_signed_in? && current_user.id == item.user_id %>
           <li>
             <%= link_to '編集', edit_item_path(item.id), method: :get %>
           </li>
           <li>
             <%= link_to '削除', item_path(item.id), method: :delete %>
           </li>
-          <% elsif user_signed_in? && current_user.id != item.user_id%>
+          <% end %>
           <li>
             <%= link_to '詳細', item_path(item.id), method: :get %>
           </li>
 
-        <% end %>
         </ul>
       </div>
       <span class="name">

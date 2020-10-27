@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
   has_many :comments, dependent: :destroy
 
   def self.search(search)
@@ -22,7 +22,7 @@ class Item < ApplicationRecord
     validates :category_id
     validates :prefecture_id
     validates :season_id
-    validates :image
+    validates :images
   end
 
   with_options numericality: { other_than: 1 } do

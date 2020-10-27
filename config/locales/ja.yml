@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nick_name: ニックネーム
+        first_name: 苗字
+        last_name: 名前
+        birthday: 生年月日
+      item:
+        title: タイトル
+        text: テキスト
+        images: 画像
+        category_id: カテゴリー
+        season_id: 季節
+        prefecture_id: 場所
