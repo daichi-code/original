@@ -16,12 +16,11 @@
           <li>
             <%= link_to '削除', item_path(item.id), method: :delete %>
           </li>
-          <% elsif user_signed_in? && current_user.id != item.user_id%>
+        <% end %>
           <li>
             <%= link_to '詳細', item_path(item.id), method: :get %>
           </li>
 
-        <% end %>
         </ul>
       </div>
       <span class="name">
