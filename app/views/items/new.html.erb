@@ -6,10 +6,10 @@
 
 
       <%= f.text_area :title, placeholder: "Title" %>
-      <%= f.file_field :images, name: 'item[images][]', id: 'item_image' %>
+      <%= f.file_field :images, name: 'items_tag[images][]', id: 'item_image' %>
 
-      <%= f.label :name, "タグ" %>
-      <%= f.text_field :name %>
+      <%= f.label :message, "タグ" %>
+      <%= f.text_field :message %>
 
       <div id="image-list"></div>
 
