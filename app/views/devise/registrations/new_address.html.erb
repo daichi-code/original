@@ -1,0 +1,38 @@
+<div class="contents row">
+  <div class="container">
+    <h2>住所情報登録</h2>
+    <%= form_for @address, id: 'new_user', class: 'new_user', local: true do |f| %>
+    <%= render "devise/shared/error_messages", resource: @address %>
+
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">県名</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {} %>
+      </div>
+
+
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">郵便番号</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :postal_code, class:"input-default", id:"postal_code", placeholder:"例) 000-0000", maxlength:"8" %>
+      </div>
+
+
+      <div class="field">
+        <div class='form-text-wrap'>
+          <label class="form-text">住所</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :address, class:"input-default", id:"address", placeholder:"住所を入力してください", autofocus: true %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+    <% end %>
+  </div>
+</div>
