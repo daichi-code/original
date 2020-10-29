@@ -13,7 +13,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = ItemsTag.new(item_params)
-    binding.pry
     if @item.valid?
       @item.save
       redirect_to root_path

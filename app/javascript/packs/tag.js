@@ -1,8 +1,8 @@
-if (location.pathname.match("items/new")){
+if (document.URL.match( /new/ ) || document.URL.match( /edit/ )){
   document.addEventListener("DOMContentLoaded", () => {
-    const inputElement = document.getElementById("items_tag_name");
+    const inputElement = document.getElementById("items_tag_message");
     inputElement.addEventListener("keyup", () => {
-      const keyword = document.getElementById("items_tag_name").value;
+      const keyword = document.getElementById("items_tag_message").value;
       const XHR = new XMLHttpRequest();
       XHR.open("GET", `search/?keyword=${keyword}`, true);
       XHR.responseType = "json";
@@ -20,7 +20,7 @@ if (location.pathname.match("items/new")){
             searchResult.appendChild(childElement);
             const clickElement = document.getElementById(tag.id);
             clickElement.addEventListener("click", () => {
-              document.getElementById("items_tag_name").value = clickElement.textContent;
+              document.getElementById("items_tag_message").value = clickElement.textContent;
               clickElement.remove();
             });
           });

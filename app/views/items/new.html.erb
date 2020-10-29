@@ -8,10 +8,14 @@
       <%= f.text_area :title, placeholder: "Title" %>
       <%= f.file_field :images, name: 'items_tag[images][]', id: 'item_image' %>
 
+      <div id="image-list"></div>
+
+      <div class="tags">
       <%= f.label :message, "タグ" %>
       <%= f.text_field :message %>
+      </div>
 
-      <div id="image-list"></div>
+      <div id="search-result"></div>
 
       <div class="weight-bold-text">
         Category
