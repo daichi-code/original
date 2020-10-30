@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
 #   def facebook
 #     authorization
