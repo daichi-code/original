@@ -34,14 +34,16 @@
   <% end %>
   <ul class="comments_lists">
     <li class="comments_list">
-    <% if @comment %>
-      <% @comments.each do |comment| %>
-        <p>
-          <strong><%= link_to comment.user.nick_name, "/users/#{comment.user_id}" %>：</strong>
-          <%= comment.text %>
-        </p>
+      <% if @comment %>
+        <div id='comments'>
+          <% @comments.each do |comment| %>
+            <p>
+              <strong><%= link_to comment.user.nick_name, "/users/#{comment.user_id}" %>：</strong>
+              <%= comment.text %>
+            </p>
+          <% end %>
+        </div>
       <% end %>
-    <% end %>
     </li>
   </ul>
   </div>
