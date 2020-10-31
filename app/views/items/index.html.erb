@@ -1,14 +1,18 @@
-<%= form_with(url: search_items_path, local: true, method: :get, class: "search-form") do |form| %>
-  <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-  <%= form.submit "検索", class: "search-btn" %>
-<% end %>
+<%# <%= form_with(url: search_items_path, local: true, method: :get, class: "search-form") do |form| %>
+  <%# <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+  <%# <%= form.submit "検索", class: "search-btn" %>
+<%# <% end %>
 <div class="contents row">
   <% @items.each do |item| %>
 
     <div class="content_po">
-      <p><%= item.text %></p>
+    <p>
       <% item.images.each do |image| %>
       <%= image_tag image %>
+      <p>
+      <%= link_to item.user.nick_name, "/users/#{item.user_id}"%>
+      </p>
+      <%= item.text %>
       <% end %>
       <div class="more">
         <ul class="more_list">
@@ -27,4 +31,5 @@
       </div>
     </div>
   <% end %>
+  </p>
 </div>

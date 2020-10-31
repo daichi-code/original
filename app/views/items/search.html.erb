@@ -6,9 +6,6 @@
 <% end %>
 <div class="contents row">
   <% @items.each do |item| %>
-      <div class="content_po">
-      <p><%= item.text %></p>
-      <%= image_tag item.image%>
       <div class="more">
         <ul class="more_list">
         <% if user_signed_in? && current_user.id == item.user_id %>
@@ -25,9 +22,6 @@
 
         </ul>
       </div>
-      <span class="name">
-        <%= item.title %>
-      </span>
     </div>
   <% end %>
 </div>

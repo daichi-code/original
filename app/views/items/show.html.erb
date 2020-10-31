@@ -37,19 +37,19 @@
   </div>
     <% end %>
   <% end %>
-  <ul class="comments_lists">
-    <li class="comments_list">
-      <% if @comment %>
-        <div id='comments'>
-          <% @comments.each do |comment| %>
+    <ul class="comments_lists">
+      <li class="comments_list">
+        <% if @comment %>
+          <% @comments.reverse_each do |comment| %>
             <p>
-              <strong><%= link_to comment.user.nick_name, "/users/#{comment.user_id}" %>：</strong>
-              <%= comment.text %>
+              <div id='comments'>
+                <strong><%= link_to comment.user.nick_name, "/users/#{comment.user_id}" %>：</strong>
+                <%= comment.text %>
+              </div>
             </p>
           <% end %>
-        </div>
-      <% end %>
-    </li>
-  </ul>
+        <% end %>
+      </li>
+    </ul>
   </div>
 </div>
