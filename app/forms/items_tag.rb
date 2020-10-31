@@ -1,10 +1,9 @@
 class ItemsTag
 
   include ActiveModel::Model
-  attr_accessor :title, :text, :category_id, :prefecture_id, :season_id, :images, :message, :user_id, :item_id, :tag_id
+  attr_accessor :text, :category_id, :prefecture_id, :season_id, :images, :message, :user_id, :item_id, :tag_id
 
   with_options presence: true do
-    validates :title
     validates :text
     validates :category_id
     validates :prefecture_id
@@ -23,7 +22,7 @@ class ItemsTag
 
   def save
 
-    item = Item.create(title: title, text: text, category_id: category_id, prefecture_id: prefecture_id, season_id: season_id, images: images, user_id: user_id)
+    item = Item.create(text: text, category_id: category_id, prefecture_id: prefecture_id, season_id: season_id, images: images, user_id: user_id)
 
     tag = Tag.where(message: message).first_or_initialize
     tag.save

@@ -1,23 +1,28 @@
 <div class="contents row">
   <div class="content_po">
-    <p><%= @item.text %></p>
-    <% @item.images.each do |image| %>
-    <%= image_tag image %>
-    <% end %>
-    <div class="more">
-      <ul class="more_list">
-      <% if user_signed_in? && current_user.id == @item.user_id %>
-        <li>
-          <%= link_to '編集', edit_item_path(@item.id), method: :get %>
-        </li>
-        <li>
-          <%= link_to '削除', item_path(@item.id), method: :delete %>
-        </li>
+    <span>
+      <p></p>
+    </span>
+      <% @item.images.each do |image| %>
+      <%= image_tag image %>
       <% end %>
-      </ul>
-    </div>
+        <div class="more">
+          <ul class="more_list">
+            <% if user_signed_in? && current_user.id == @item.user_id %>
+              <li>
+                <%= link_to '編集', edit_item_path(@item.id), method: :get %>
+              </li>
+              <li>
+                <%= link_to '削除', item_path(@item.id), method: :delete %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <p><%= @item.text %></p>
     <span class="name">
-      <%= @item.title %>
+      <a href="/users/<%= @item.user.id %>">
+        <span>投稿者 </span><%= @item.user.nick_name %>
+      </a>
     </span>
   </div>
   <div class="container">

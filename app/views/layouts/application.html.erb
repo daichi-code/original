@@ -16,7 +16,7 @@
 
         <% if user_signed_in? %>
           <div class="user_nav grid-6">
-            <span><%= current_user.nickname %>
+            <span><%= current_user.nick_name %>
               <ul class="user__info">
                 <li>
                   <%= link_to "マイページ", "/users/#{current_user.id}" %>
@@ -24,7 +24,7 @@
                 </li>
               </ul>
             </span>
-            <%= link_to "投稿する", new_tweet_path, class: "post" %>
+            <%= link_to "投稿する", new_item_path, class: "post" %>
           </div>
         <% else %>
           <div class="grid-6">

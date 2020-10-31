@@ -1,10 +1,8 @@
-<%= form_with(url: search_items_path, local: true, method: :get, class: "search-form") do |form| %>
-  <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-  <%= form.submit "検索", class: "search-btn" %>
-<% end %>
 <div class="contents row">
+<h2>
+  <p><%= @nickname %> さんの投稿一覧</p>
+</h2>
   <% @items.each do |item| %>
-
     <div class="content_po">
       <p><%= item.text %></p>
       <% item.images.each do |image| %>
@@ -23,6 +21,7 @@
           <li>
             <%= link_to '詳細', item_path(item.id), method: :get %>
           </li>
+
         </ul>
       </div>
     </div>

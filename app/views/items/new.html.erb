@@ -4,8 +4,6 @@
       <%= form_with model: @item, url: items_path, local: true do |f| %>
       <%= render 'shared/error_messages', model: f.object %>
 
-
-      <%= f.text_area :title, placeholder: "Title" %>
       <%= f.file_field :images, name: 'items_tag[images][]', id: 'item_image' %>
 
       <div id="image-list"></div>
