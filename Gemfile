@@ -41,6 +41,11 @@ group :development do
   gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'bcrypt', '3.1.16'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'letter_opener_web'
+  gem 'letter_opener', group: :development
 end
 
 group :test do
@@ -84,4 +89,4 @@ gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
 
 # gem 'font-awesome-rails'
-# gem 'carrierwave'
+gem 'carrierwave', '~> 1.0'
