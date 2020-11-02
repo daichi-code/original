@@ -1064,3 +1064,77 @@ footer p {
   margin-bottom: 20px;
 }
 
+.radius1{
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 80%;
+}
+
+.radius2{
+  background-color: #e8e8e8;
+  border: 5px solid #bbbfca;
+  border-radius: 20px 20px 20px 20px;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  margin: 5px;
+}
+
+.text1{
+  margin-left: 5px;
+}
+
+.title1{
+  font-size: 25px;
+  color: #495464;
+  font-family: 'ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN',sans-serif;
+  text-align: center;
+}
+
+.like1{
+  font-size: 20px;
+  text-align: center;
+  margin-top: 3px;
+}
+
+.like2{
+  font-size: 12px;
+  margin-left: 3px;
+  padding: 0;
+}
+
+.like{
+  background-color: #e8e8e8;
+  border: 5px solid #bbbfca;
+  border-radius: 20px 20px 20px 20px;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  margin: 5px;
+}
+
+.textlike{
+  font-size: 20px;
+  text-align: center;
+  margin: -10px;
+}
+
+.item-name{
+  margin: 5px;
+  margin-top: 8px;
+  font-size: 20px;
+}
+.itemtext{
+  margin-left: 5px;
+  margin-top: -15px;
+}
+.like3{
+  text-align: center;
+  font-size: 30px;
+}
+.like4{
+  margin-top: -10;
+}

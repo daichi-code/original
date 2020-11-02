@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order('id DESC')
+    @like = Like.new
   end
 
   def new
@@ -42,6 +43,7 @@ class ItemsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
+    @like = Like.new
   end
 
   def search

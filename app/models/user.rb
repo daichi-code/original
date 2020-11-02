@@ -9,6 +9,11 @@ class User < ApplicationRecord
   # has_many :sns_credentials
   has_many :items
   has_one_attached :image
+  has_many :likes
+  has_many :liked_posts, through: :likes, source: :item
+  def already_liked?(item)
+    self.likes.exists?(item_id: item.id)
+  end
 
   with_options presence: true do
     validates :nick_name

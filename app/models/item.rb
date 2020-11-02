@@ -4,6 +4,8 @@ class Item < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :item_tag_relations
   has_many :tags, through: :item_tag_relations, dependent: :destroy
+  has_many :likes
+  has_many :liked_users, through: :likes, source: :user
 
 
   extend ActiveHash::Associations::ActiveRecordExtensions

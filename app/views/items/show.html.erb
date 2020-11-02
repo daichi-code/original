@@ -18,13 +18,30 @@
             <% end %>
           </ul>
         </div>
-      <p><%= @item.text %></p>
+    <div class="item-name">
     <span class="name">
       <a href="/users/<%= @item.user.id %>">
         <span>投稿者 </span><%= @item.user.nick_name %>
       </a>
     </span>
+    </div>
+  <div class="itemtext">
+  <p><%= @item.text %></p>
   </div>
+  <% if current_user.already_liked?(@item) %>
+    <%= button_to 'いいね！を取り消す', item_like_path(@item), method: :delete %>
+  <% else %>
+    <%= button_to 'いいね！', item_likes_path(@item) %>
+  <% end %>
+  <div class="like3">
+  <h3>いいね！件数: <%= @item.likes.count %></h3>
+  </div>
+  <p>いいね！したユーザー</p>
+  <div class="like4">
+  <% @item.liked_users.each do |user| %>
+    <li><%= user.nick_name %></li>
+  </div>
+  <% end %>
   <div class="container">
   <% if user_signed_in? %>
     <%= form_with(model: [@item, @comment], method: :show, local: true) do |f| %>

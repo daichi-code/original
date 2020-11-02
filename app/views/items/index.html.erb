@@ -3,16 +3,28 @@
   <%# <%= form.submit "検索", class: "search-btn" %>
 <%# <% end %>
 <div class="contents row">
+<div class="radius">
   <% @items.each do |item| %>
-
+  <div class="radius2">
     <div class="content_po">
     <p>
       <% item.images.each do |image| %>
       <%= image_tag image %>
-      <p>
-      <%= link_to item.user.nick_name, "/users/#{item.user_id}"%>
-      </p>
-      <%= item.text %>
+      <div class="text1">
+        <h3>
+          <p>投稿者
+            <%= link_to item.user.nick_name, "/users/#{item.user_id}"%>
+          </p>
+        </h3>
+          <%= item.text %>
+      </div>
+      <div class="textlike">
+        <h3>
+          <p>
+            <span>いいね！件数：</span><%= item.liked_users.count %>
+          </p>
+        </h3>
+      </div>
       <% end %>
       <div class="more">
         <ul class="more_list">
@@ -30,6 +42,8 @@
         </ul>
       </div>
     </div>
+    </div>
   <% end %>
   </p>
+</div>
 </div>

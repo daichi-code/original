@@ -1,29 +1,48 @@
 <div class="contents row">
-<h2>
-  <p><%= @nickname %> さんの投稿一覧</p>
-</h2>
-  <% @items.each do |item| %>
-    <div class="content_po">
-      <p><%= item.text %></p>
-      <% item.images.each do |image| %>
-      <%= image_tag image %>
+  <div class="title1">
+    <p><%= @nickname %> さんの投稿一覧</p>
+  </div>
+  <div class="like">
+  <div class="like1">いいね！している投稿</div>
+  <div class="like2">
+    <% @user.liked_posts.each do |post| %>
+      <p><%= post.user.nick_name %>さんの投稿：
+      <%= post.text %>
+      </p>
+    <% end %>
+  </div>
+  </div>
+  <p>
+  <div class="radius">
+      <% @items.each do |item| %>
+        <div class="radius2">
+          <div class="content_po">
+            <% item.images.each do |image| %>
+              <p>
+                <%= image_tag image %>
+              </p>
+            <% end %>
+            <div class="text1">
+              <%= item.text %>
+            </div>
+            <div class="more">
+              <ul class="more_list">
+                <% if user_signed_in? && current_user.id == item.user_id %>
+                  <li>
+                    <%= link_to '編集', edit_item_path(item.id), method: :get %>
+                  </li>
+                  <li>
+                    <%= link_to '削除', item_path(item.id), method: :delete %>
+                  </li>
+                <% end %>
+                <li>
+                  <%= link_to '詳細', item_path(item.id), method: :get %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       <% end %>
-      <div class="more">
-        <ul class="more_list">
-          <% if user_signed_in? && current_user.id == item.user_id %>
-          <li>
-            <%= link_to '編集', edit_item_path(item.id), method: :get %>
-          </li>
-          <li>
-            <%= link_to '削除', item_path(item.id), method: :delete %>
-          </li>
-          <% end %>
-          <li>
-            <%= link_to '詳細', item_path(item.id), method: :get %>
-          </li>
-
-        </ul>
-      </div>
     </div>
-  <% end %>
+  </p>
 </div>
