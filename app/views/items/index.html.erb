@@ -28,15 +28,17 @@
       <% end %>
       <div class="more">
         <ul class="more_list">
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to '詳細', item_path(item.id), method: :get %>
+          </li>
+        <% end %>
           <% if user_signed_in? && current_user.id == item.user_id %>
           <li>
             <%= link_to '編集', edit_item_path(item.id), method: :get %>
           </li>
           <li>
             <%= link_to '削除', item_path(item.id), method: :delete %>
-          </li>
-          <li>
-            <%= link_to '詳細', item_path(item.id), method: :get %>
           </li>
           <% end %>
         </ul>
