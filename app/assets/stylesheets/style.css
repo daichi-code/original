@@ -1141,3 +1141,16 @@ footer p {
 .like4{
   margin-top: -10;
 }
+
+.page{
+  margin-top: 20px;
+  font-family: 'ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN',sans-serif;
+}
+
+.pagination{
+  display: flex;
+}
+.page-item{
+  margin: 7px;
+}
+

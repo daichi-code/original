@@ -90,3 +90,9 @@ gem "omniauth-rails_csrf_protection"
 
 # gem 'font-awesome-rails'
 gem 'carrierwave', '~> 1.0'
+
+# gem "acts_as_follower", github: "tcocca/acts_as_follower"
+
+gem 'slim'
+gem 'html2slim'
+gem 'kaminari'
