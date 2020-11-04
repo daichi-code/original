@@ -96,3 +96,8 @@ gem 'carrierwave', '~> 1.0'
 gem 'slim'
 gem 'html2slim'
 gem 'kaminari'
+
+gem "haml-rails", "~> 2.0"
+
+# gem 'jp_prefecture'
+# gem 'jquery-rails'
