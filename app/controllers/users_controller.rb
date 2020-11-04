@@ -5,15 +5,17 @@ class UsersController < ApplicationController
     @items = @user.items
   end
 
-  # # @userがフォローしているユーザー一覧
-  # def following
-  #   @user = User.find(params[:user_id])
-  #   @followings = @user.following_user
-  # end
+  # @userがフォローしているユーザー一覧
+  def followings
+    @user =User.find(params[:id])
+    @users =@user.followings.page(params[:page]).per(5)
+    render 'show_followings'
+  end
 
-  # # @userをフォローしているユーザー一覧
-  # def follower
-  #   @user = User.find(params[:user_id])
-  #   @followers = @user.follower_user
-  # end
+  # @userをフォローしているユーザー一覧
+  def followers
+    @user =User.find(params[:id])
+    @users =@user.followers.page(params[:page]).per(5)
+    render 'show_followers'
+  end
 end

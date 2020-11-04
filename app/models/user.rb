@@ -12,33 +12,25 @@ class User < ApplicationRecord
   has_many :likes
   has_many :liked_posts, through: :likes, source: :item
 
-  # フォロー取得
-  has_many :follower, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  has_many :following_relationships,foreign_key: "follower_id", class_name: "FollowRelationship",  dependent: :destroy
+  has_many :followings, through: :following_relationships
+  has_many :follower_relationships,foreign_key: "following_id",class_name: "FollowRelationship", dependent: :destroy
+  has_many :followers, through: :follower_relationships
 
-  # フォロワー取得
-  has_many :followed, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
-
-  # 自分がフォローしている人
-  has_many :following_user, through: :follower, source: :followed
-
-  # 自分をフォローしている人（フォロワー）
-  has_many :follower_user, through: :followed, source: :follower
-
-
-  # ユーザーをフォローする
-  def follow(user_id)
-    follower.create(followed_id: user_id)
+  def following?(other_user)
+    self.followings.include?(other_user)
   end
 
-  # ユーザーのフォローを外す
-  def unfollow(user_id)
-    follower.find_by(followed_id: user_id).destroy
+  #ユーザーをフォローする
+  def follow(other_user)
+    self.following_relationships.create(following_id: other_user.id)
   end
 
-  # フォロー確認を行う
-  def following?(user)
-    following_user.include?(user)
+  #ユーザーのフォローを解除する
+  def unfollow(other_user)
+    self.following_relationships.find_by(following_id: other_user.id).destroy
   end
+
 
   def already_liked?(item)
     self.likes.exists?(item_id: item.id)

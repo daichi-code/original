@@ -11,10 +11,22 @@
           </p>
         <% end %>
       </div>
+
+    <%# <%= link_to "フォロー(#{@user.followings.count})", followings_user_path(@user), class: "nav-link" %>
+
+    <%# <%= link_to "フォロワー(#{@user.followers.count})", followers_user_path(@user), class: "nav-link" %>
+
+  <%# if user_signed_in? && @user != current_user%>
+    <%# <div id="follow_form"> %>
+      <%# if current_user.following?(@user) %>
+        <%#= render "unfollow" %>
+      <%# else %>
+        <%#= render "follow" %>
+      <%# end %>
+    <%# </div> %>
+  <%# end %>
+
   </div>
-  <%# <div id="follow_form">
-    <%= render 'relationships/follow', user: @user %>
-  <%# </div> %>
   <p>
   <div class="radius">
       <% @items.each do |item| %>

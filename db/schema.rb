@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_023108) do
+ActiveRecord::Schema.define(version: 2020_11_04_092311) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -53,6 +53,16 @@ ActiveRecord::Schema.define(version: 2020_11_04_023108) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "follow_relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "follower_id"
+    t.bigint "following_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["follower_id", "following_id"], name: "index_follow_relationships_on_follower_id_and_following_id", unique: true
+    t.index ["follower_id"], name: "index_follow_relationships_on_follower_id"
+    t.index ["following_id"], name: "index_follow_relationships_on_following_id"
+  end
+
   create_table "item_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id"
     t.bigint "tag_id"
@@ -83,10 +93,12 @@ ActiveRecord::Schema.define(version: 2020_11_04_023108) do
   end
 
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "follower_id", null: false
-    t.integer "followed_id", null: false
+    t.bigint "follower_id"
+    t.bigint "following_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+    t.index ["following_id"], name: "index_relationships_on_following_id"
   end
 
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -123,9 +135,13 @@ ActiveRecord::Schema.define(version: 2020_11_04_023108) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
+  add_foreign_key "follow_relationships", "users", column: "follower_id"
+  add_foreign_key "follow_relationships", "users", column: "following_id"
   add_foreign_key "item_tag_relations", "items"
   add_foreign_key "item_tag_relations", "tags"
   add_foreign_key "items", "users"
   add_foreign_key "likes", "items"
   add_foreign_key "likes", "users"
+  add_foreign_key "relationships", "users", column: "follower_id"
+  add_foreign_key "relationships", "users", column: "following_id"
 end
