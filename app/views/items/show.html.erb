@@ -28,6 +28,8 @@
   <div class="itemtext">
   <p><%= @item.text %></p>
   </div>
+  <p>季節 ”<%= @item.season.name%>”</p>
+  <p>場所 ”<%= @item.prefecture.name%>”</p>
   <% if current_user.already_liked?(@item) %>
     <%= button_to 'いいね！を取り消す', item_like_path(@item), method: :delete %>
   <% else %>
