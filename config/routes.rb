@@ -25,4 +25,7 @@ Rails.application.routes.draw do
     end
   end
   resources :follow_relationships, only: [:create, :destroy]
+
+  resources :notices, only: [:index, :destroy]
+
 end

@@ -17,6 +17,9 @@ class User < ApplicationRecord
   has_many :follower_relationships,foreign_key: "following_id",class_name: "FollowRelationship", dependent: :destroy
   has_many :followers, through: :follower_relationships
 
+  has_many :active_notices, class_name: 'Notice', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notices, class_name: 'Notice', foreign_key: 'visited_id', dependent: :destroy
+
   def following?(other_user)
     self.followings.include?(other_user)
   end
@@ -31,9 +34,22 @@ class User < ApplicationRecord
     self.following_relationships.find_by(following_id: other_user.id).destroy
   end
 
-
+  # いいね機能
   def already_liked?(item)
     self.likes.exists?(item_id: item.id)
+  end
+
+  def create_notice_follow!(current_user)
+    #すでに通知が作成されているか確認
+    temp = Notice.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notice = current_user.active_notices.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notice.save if notice.valid?
+
+    end
   end
 
   with_options presence: true do

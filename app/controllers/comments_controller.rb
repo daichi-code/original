@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @comments = Comment.all
     @comment = Comment.new
   end
-  
+
   def create
     @comment = Comment.create(comment_params)
     if @comment.save
@@ -13,7 +13,22 @@ class CommentsController < ApplicationController
     else
       redirect_to item_path(@comment.item_id)
     end
+
+    # @comment.like_id = params[:like_id]
+    # if @comment.save
+    #   flash[:success] = 'コメントしました'
+    #   #通知機能用
+    #   @like = @comment.like
+    #   @like.create_notice_comment!(current_user, @comment.id)
+    #   #ここまで通知機能
+    #   redirect_to @comment.like
+    # else
+    #   comments_get
+    #   render template: 'likes/show'
+    # end
   end
+
+
 
   private
   def comment_params
