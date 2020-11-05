@@ -80,6 +80,7 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'rails-erd'
 end
 
 gem 'rails-i18n'
