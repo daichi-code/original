@@ -23,6 +23,10 @@ class User < ApplicationRecord
 
   has_many :sns_credentials
 
+  has_many :room_users
+  has_many :rooms, through: :room_users
+  has_many :messages
+
   def following?(other_user)
     self.followings.include?(other_user)
   end

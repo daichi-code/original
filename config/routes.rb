@@ -29,4 +29,6 @@ Rails.application.routes.draw do
 
   resources :notices, only: [:index, :destroy]
 
+  resources :rooms, only: [:create, :new, :destroy]
+
 end

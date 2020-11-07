@@ -20,6 +20,7 @@
               <ul class="user__info">
                 <li>
                   <%= link_to "マイページ", "/users/#{current_user.id}" %>
+                  <%#= link_to "チャット", new_room_path, method: :get %>
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
                 </li>
               </ul>
