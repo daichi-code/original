@@ -130,8 +130,16 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.4.4)
     erubi (1.9.0)
     erubis (2.7.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
+    faker (2.14.0)
+      i18n (>= 1.6, < 2)
     faraday (1.1.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
@@ -302,6 +310,23 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.4)
+    rspec-core (3.10.0)
+      rspec-support (~> 3.10.0)
+    rspec-expectations (3.10.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.10.0)
+    rspec-mocks (3.10.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.10.0)
+    rspec-rails (4.0.1)
+      actionpack (>= 4.2)
+      activesupport (>= 4.2)
+      railties (>= 4.2)
+      rspec-core (~> 3.9)
+      rspec-expectations (~> 3.9)
+      rspec-mocks (~> 3.9)
+      rspec-support (~> 3.9)
+    rspec-support (3.10.0)
     rubocop (1.0.0)
       parallel (~> 1.10)
       parser (>= 2.7.1.5)
@@ -409,6 +434,8 @@ DEPENDENCIES
   capybara (>= 2.15)
   carrierwave (~> 1.0)
   devise
+  factory_bot_rails
+  faker
   gretel
   haml-rails (~> 2.0)
   html2slim
@@ -428,6 +455,7 @@ DEPENDENCIES
   rails (~> 6.0.0)
   rails-erd
   rails-i18n
+  rspec-rails (~> 4.0.0)
   rubocop
   sass-rails (~> 5)
   selenium-webdriver
