@@ -48,6 +48,7 @@ class ItemsController < ApplicationController
 
   def search
     @items = Item.search(params[:keyword])
+    @item = Item.page(params[:page]).reverse_order
   end
 
   def search_tag

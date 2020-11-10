@@ -1,9 +1,15 @@
-<%# <%= form_with(url: search_items_path, local: true, method: :get, class: "search-form") do |form| %>
-  <%# <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-  <%# <%= form.submit "検索", class: "search-btn" %>
-<%# <% end %>
 <div class="contents row">
   <div class="radius">
+
+    <% if user_signed_in? %>
+      <div class="search">
+        <%= form_with(url: search_items_path, local: true, method: :get, class: "search-form") do |form|%>
+          <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+          <%= form.submit "検索", class: "search-btn" %>
+        <% end %>
+      </div>
+    <% end %>
+
     <% @items.each do |item| %>
       <div class="radius2">
         <div class="content_po">

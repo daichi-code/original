@@ -1,27 +1,59 @@
-<%= form_with(url: search_items_path, local: true, method: :get, class: "search-form") do |form| %>
-  <% if user_signed_in? %>
-    <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-    <%= form.submit "検索", class: "search-btn" %>
-  <% end %>
-<% end %>
 <div class="contents row">
-  <% @items.each do |item| %>
-      <div class="more">
-        <ul class="more_list">
-        <% if user_signed_in? && current_user.id == item.user_id %>
-          <li>
-            <%= link_to '編集', edit_item_path(item.id), method: :get %>
-          </li>
-          <li>
-            <%= link_to '削除', item_path(item.id), method: :delete %>
-          </li>
+  <div class="radius">
+    <div class="search">
+      <%= form_with(url: search_items_path, local: true, method: :get, class: "search-form") do |form| %>
+        <% if user_signed_in? %>
+          <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+          <%= form.submit "検索", class: "search-btn" %>
         <% end %>
-          <li>
-            <%= link_to '詳細', item_path(item.id), method: :get %>
-          </li>
-
-        </ul>
-      </div>
+      <% end %>
     </div>
-  <% end %>
+
+    <% @items.each do |item| %>
+      <div class="radius2">
+        <div class="content_po">
+        <p>
+          <% item.images.each do |image| %>
+          <%= image_tag image %>
+          <% end %>
+          <div class="text1">
+            <h3>
+              <p>投稿者
+                <%= link_to item.user.nick_name, "/users/#{item.user_id}"%>
+              </p>
+            </h3>
+              <%= item.text %>
+          </div>
+          <div class="textlike">
+            <h3>
+              <p>
+                <span>いいね！件数：</span><%= item.liked_users.count %>
+              </p>
+            </h3>
+          </div>
+          <div class="more">
+            <ul class="more_list">
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to '詳細', item_path(item.id), method: :get %>
+              </li>
+            <% end %>
+              <% if user_signed_in? && current_user.id == item.user_id %>
+              <li>
+                <%= link_to '編集', edit_item_path(item.id), method: :get %>
+              </li>
+              <li>
+                <%= link_to '削除', item_path(item.id), method: :delete %>
+              </li>
+              <% end %>
+            </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="page">
+        <%= paginate @item %>
+      </div>
+    </p>
+  </div>
 </div>
