@@ -12,19 +12,16 @@
         <% end %>
       </div>
 
-    <%# <%= link_to "フォロー(#{@user.followings.count})", followings_user_path(@user), class: "nav-link" %>
+<% unless @user == current_user %>
+  <% if current_user.following?(@user) %>
+    <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
+  <% else %>
+    <%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
+  <% end %>
+<% end %>
+<p></p>
 
-    <%# <%= link_to "フォロワー(#{@user.followers.count})", followers_user_path(@user), class: "nav-link" %>
 
-  <%# if user_signed_in? && @user != current_user%>
-    <%# <div id="follow_form"> %>
-      <%# if current_user.following?(@user) %>
-        <%#= render "unfollow" %>
-      <%# else %>
-        <%#= render "follow" %>
-      <%# end %>
-    <%# </div> %>
-  <%# end %>
 
   </div>
   <p>

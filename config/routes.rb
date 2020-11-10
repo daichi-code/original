@@ -25,7 +25,9 @@ Rails.application.routes.draw do
       get :followings, :followers
     end
   end
-  resources :follow_relationships, only: [:create, :destroy]
+
+  post 'follow/:id' => 'relations#follow', as: 'follow' # フォローする
+  post 'unfollow/:id' => 'relations#unfollow', as: 'unfollow' # フォロー外す
 
   resources :notices, only: [:index, :destroy]
 
