@@ -1157,3 +1157,48 @@ footer p {
 .search{
   margin-top: -15px;
 }
+
+.searches{
+  text-align: center;
+  font-size: 25px;
+  margin: -15px;
+  font-family: 'Phosphate-Solid','Silom','ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN',sans-serif;
+  color: #9ba4b4;
+}
+
+h6 {
+  font-size: 20px;
+  position: relative;
+  padding: 1.5rem 2rem;
+  font-family: 'ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN',sans-serif;
+  -webkit-box-shadow: 0 2px 14px rgba(0, 0, 0, .1);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, .1);
+}
+
+h6:before,
+h6:after {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  content: '';
+  background-image: -webkit-linear-gradient(315deg, #704308 0%, #ffce08 40%, #e1ce08 60%, #704308 100%);
+  background-image: linear-gradient(135deg, #704308 0%, #ffce08 40%, #e1ce08 60%, #704308 100%);
+}
+
+h6:before {
+  top: 0;
+}
+
+h6:after {
+  bottom: 0;
+}
+
+.iine{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.textor{
+  margin-top: -15px;
+}

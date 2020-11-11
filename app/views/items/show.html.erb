@@ -26,7 +26,12 @@
     </span>
     </div>
   <div class="itemtext">
-  <p><%= @item.text %></p>
+  <div class="textor">
+    <p>
+    <%= l @item.created_at, format: :short %>
+    </p>
+  </div>
+    <p><%= @item.text %></p>
   </div>
   <p>季節 ”<%= @item.season.name%>”</p>
   <p>場所 ”<%= @item.prefecture.name%>”</p>
@@ -70,6 +75,5 @@
         <% end %>
       </li>
     </ul>
-    <%= paginate @item %>
   </div>
 </div>

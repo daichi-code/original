@@ -6,6 +6,8 @@ class ItemsController < ApplicationController
   def index
     @items = Item.page(params[:page]).reverse_order
     @like = Like.new
+
+    @item = Item.find(Like.group(:item_id).order('count(item_id) desc').limit(1).pluck(:item_id))
   end
 
   def new
