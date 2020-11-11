@@ -39,10 +39,18 @@
     <div class='form-text-wrap'>
       <label class="form-text">パスワード(確認)</label>
       <span class="indispensable">必須</span>
+      <span class="info-text">※上記のパスワードと同じ</span>
     </div>
     <%= f.password_field :password, class:"input-default", id:"password-confirmation", placeholder:"同じパスワードを入力して下さい" %>
   </div>
 
+  <%# <div class="field">
+    <div class="form-text-wrap">
+      <label class="form-text">アイコン画像</label>
+      <span class="indispensable">必須</span>
+    </div> %>
+    <%#= f.file_field :image, class: "form-control floating-label", placeholder: "画像" %>
+  <%# </div> %>
 
     <div class='input-name-wrap'>
       <label class="form-text">フルネーム</label>

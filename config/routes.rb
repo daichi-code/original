@@ -20,13 +20,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: :show
+  resources :users, only: [:new, :show, :edit, :update, :create]
 
 
   resources :notices, only: [:index, :destroy]
 
-  resources :rooms, only: [:create, :new, :destroy] do
-    resources :messages, only: :index
+  resources :rooms, only: [:create, :show, :new, :destroy] do
+    resources :messages, only: :create
   end
 
 end

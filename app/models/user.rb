@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_one_attached :image
   has_many :likes
   has_many :liked_posts, through: :likes, source: :item
-
+  has_many :kokos
 
   has_many :active_notices, class_name: 'Notice', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notices, class_name: 'Notice', foreign_key: 'visited_id', dependent: :destroy
