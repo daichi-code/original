@@ -8,8 +8,8 @@
     <div class="like1">いいね！している投稿</div>
       <div class="like2">
         <% @user.liked_posts.each do |post| %>
-          <p><%= post.user.nick_name %>さんの投稿：
-          <%= post.text %>
+          <p><%= link_to post.user.nick_name, user_path(post.id), method: :get %>さんの投稿：
+          <%= link_to post.text, item_path(post.id), method: :get %>
           </p>
         <% end %>
       </div>
