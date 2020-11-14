@@ -1,7 +1,7 @@
 <div class="contents row">
   <div class="container">
     <h3>編集する</h3>
-      <%= form_with model: @item, url: items_path, local: true do |f| %>
+      <%= form_with model: @item, url: item_path, method: :patch, local: true do |f| %>
       <%= render 'shared/error_messages', model: f.object %>
 
       <%= f.file_field :images, name: 'items_tag[images][]', id: 'item_image' %>
